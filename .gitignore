@@ -1,3 +1,15 @@
+.exports/android/*
+!.exports/android/.keep
+
+.exports/linux/*
+!.exports/linux/.keep
+
+.exports/web/*
+!.exports/web/.keep
+
+.exports/windows/*
+!.exports/windows/.keep
+
 # Godot 4+ specific ignores
 .godot/
 /android/
