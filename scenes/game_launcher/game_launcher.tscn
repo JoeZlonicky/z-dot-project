@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dk5litv1nwwaw"]
+
+[ext_resource type="PackedScene" uid="uid://b7btidc8x10mr" path="res://lib/scenes/launcher/launcher.tscn" id="1_qc1ji"]
+[ext_resource type="PackedScene" uid="uid://ktgpuvfmyy58" path="res://scenes/game/game.tscn" id="2_uagyi"]
+
+[node name="GameLauncher" unique_id=675085677 instance=ExtResource("1_qc1ji")]
+_main_scene = ExtResource("2_uagyi")
