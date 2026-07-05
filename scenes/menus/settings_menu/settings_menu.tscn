@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bp0bevgpkgj31"]
+
+[ext_resource type="Script" uid="uid://ytpctvmb4qvf" path="res://scenes/menus/settings_menu/settings_menu.gd" id="1_myrcm"]
+[ext_resource type="PackedScene" uid="uid://sgg1jw7ml0pb" path="res://lib/components/ui/buttons/volume_button/volume_button.tscn" id="2_aogmj"]
+[ext_resource type="PackedScene" uid="uid://dcoo4b8d4qy3t" path="res://lib/components/ui/buttons/fullscreen_button/fullscreen_button.tscn" id="3_dj0ll"]
+[ext_resource type="PackedScene" uid="uid://mr8w8fe8v0kn" path="res://lib/components/ui/buttons/license_button/license_button.tscn" id="4_tg6ey"]
+[ext_resource type="PackedScene" uid="uid://cp4pd8a0dbd16" path="res://lib/components/ui/buttons/language_toggle_button/language_toggle_button.tscn" id="5_qjiit"]
+
+[node name="SettingsMenu" type="CanvasLayer" unique_id=930100985]
+layer = 2
+script = ExtResource("1_myrcm")
+
+[node name="Settings" type="VBoxContainer" parent="." unique_id=1289317498]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Settings" unique_id=1256439209]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SETTINGS_TITLE"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="MusicButton" parent="Settings" unique_id=1257082484 instance=ExtResource("2_aogmj")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SETTINGS_MUSIC_SLIDER_LABEL"
+audio_bus = "Music"
+
+[node name="SFXButton" parent="Settings" unique_id=2018907796 instance=ExtResource("2_aogmj")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SETTINGS_SFX_SLIDER_LABEL"
+audio_bus = "SFX"
+
+[node name="FullscreenButton" parent="Settings" unique_id=832611183 instance=ExtResource("3_dj0ll")]
+layout_mode = 2
+text = "SETTINGS_TOGGLE_FULLSCREEN"
+
+[node name="LicenseButton" parent="Settings" unique_id=83213412 instance=ExtResource("4_tg6ey")]
+layout_mode = 2
+
+[node name="LanguageToggleButton" parent="Settings" unique_id=1860688582 instance=ExtResource("5_qjiit")]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="Settings" unique_id=1305697733]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+text = "SETTINGS_BACK"
+flat = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Settings/BackButton" to="." method="_on_back_button_pressed"]

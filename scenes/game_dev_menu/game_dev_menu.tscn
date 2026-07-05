@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://nm7j0fqmls17"]
-
-[ext_resource type="PackedScene" uid="uid://dec5mxhj85sw3" path="res://lib/scenes/menus/dev_menu/dev_menu.tscn" id="1_iqr7s"]
-[ext_resource type="Script" uid="uid://cq8nbo5arqyrv" path="res://scenes/game_dev_menu/game_dev_menu.gd" id="2_joxye"]
-
-[node name="GameDevMenu" unique_id=1029187767 instance=ExtResource("1_iqr7s")]
-script = ExtResource("2_joxye")
