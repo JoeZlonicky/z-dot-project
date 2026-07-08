@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bp0bevgpkgj31"]
 
-[ext_resource type="Script" uid="uid://ytpctvmb4qvf" path="res://scenes/menus/settings_menu/settings_menu.gd" id="1_myrcm"]
 [ext_resource type="PackedScene" uid="uid://sgg1jw7ml0pb" path="res://lib/components/ui/buttons/volume_button/volume_button.tscn" id="2_aogmj"]
+[ext_resource type="PackedScene" uid="uid://be4ilohcv0h4w" path="res://lib/components/ui/focus_on_visible/focus_on_visible.tscn" id="3_01fv2"]
 [ext_resource type="PackedScene" uid="uid://dcoo4b8d4qy3t" path="res://lib/components/ui/buttons/fullscreen_button/fullscreen_button.tscn" id="3_dj0ll"]
 [ext_resource type="PackedScene" uid="uid://mr8w8fe8v0kn" path="res://lib/components/ui/buttons/license_button/license_button.tscn" id="4_tg6ey"]
 [ext_resource type="PackedScene" uid="uid://cp4pd8a0dbd16" path="res://lib/components/ui/buttons/language_toggle_button/language_toggle_button.tscn" id="5_qjiit"]
+[ext_resource type="PackedScene" uid="uid://levydfyuvftl" path="res://lib/components/ui/buttons/toggle_visibility_button/toggle_visibility_button.tscn" id="7_kw0lj"]
 
 [node name="SettingsMenu" type="CanvasLayer" unique_id=930100985]
 layer = 2
-script = ExtResource("1_myrcm")
 
 [node name="Settings" type="VBoxContainer" parent="." unique_id=1289317498]
 anchors_preset = 15
@@ -26,11 +26,13 @@ horizontal_alignment = 1
 uppercase = true
 
 [node name="MusicButton" parent="Settings" unique_id=1257082484 instance=ExtResource("2_aogmj")]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "SETTINGS_MUSIC_SLIDER_LABEL"
 audio_bus = "Music"
+
+[node name="FocusOnVisible" parent="Settings/MusicButton" unique_id=1118151319 node_paths=PackedStringArray("control") instance=ExtResource("3_01fv2")]
+control = NodePath("..")
 
 [node name="SFXButton" parent="Settings" unique_id=2018907796 instance=ExtResource("2_aogmj")]
 layout_mode = 2
@@ -48,12 +50,8 @@ layout_mode = 2
 [node name="LanguageToggleButton" parent="Settings" unique_id=1860688582 instance=ExtResource("5_qjiit")]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="Settings" unique_id=1305697733]
+[node name="BackButton" parent="Settings" unique_id=606745922 node_paths=PackedStringArray("hide_canvas_layers") instance=ExtResource("7_kw0lj")]
 layout_mode = 2
-size_flags_horizontal = 4
-mouse_default_cursor_shape = 2
 text = "SETTINGS_BACK"
-flat = true
-
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="Settings/BackButton" to="." method="_on_back_button_pressed"]
+hide_canvas_layers = [NodePath("../..")]
+trigger_on_ui_cancel = true

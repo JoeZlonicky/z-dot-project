@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://nm7j0fqmls17"]
 
-[ext_resource type="Script" uid="uid://cq8nbo5arqyrv" path="res://scenes/dev_menu/dev_menu.gd" id="2_o7gvx"]
+[ext_resource type="Script" uid="uid://cq8nbo5arqyrv" path="res://scenes/menus/dev_menu/dev_menu.gd" id="1_usnpc"]
 [ext_resource type="PackedScene" uid="uid://br6oo1u60hvxe" path="res://lib/components/dev/dev_options/dev_options.tscn" id="2_pj3xy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68xp4"]
@@ -8,7 +8,7 @@ bg_color = Color(0, 0, 0, 1)
 
 [node name="DevMenu" type="CanvasLayer" unique_id=1029187767]
 layer = 100
-script = ExtResource("2_o7gvx")
+script = ExtResource("1_usnpc")
 
 [node name="Panel" type="Panel" parent="." unique_id=175895283]
 custom_minimum_size = Vector2(0, 22)

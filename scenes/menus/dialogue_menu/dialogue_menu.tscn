@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://by7j4iutullnw"]
+
+[ext_resource type="Script" uid="uid://dk7jh1t0ksq5j" path="res://scenes/menus/dialogue_menu/dialogue_menu.gd" id="1_xtltp"]
+[ext_resource type="PackedScene" uid="uid://jylldslf8ft6" path="res://lib/components/ui/typed_label/typed_label.tscn" id="2_05377"]
+[ext_resource type="PackedScene" uid="uid://b5vb1d2uoteny" path="res://lib/components/ui/dialogue_queue/dialogue_queue.tscn" id="2_lsbky"]
+[ext_resource type="PackedScene" uid="uid://cjjrhcxl65c8u" path="res://scenes/menus/dialogue_menu/dialogue_option/dialogue_option.tscn" id="3_lsbky"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3xgi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msum5"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ea0my"]
+random_pitch = 1.2
+random_volume_offset_db = 2.0
+streams_count = 4
+
+[node name="DialogueScreen" type="CanvasLayer" unique_id=103227618]
+script = ExtResource("1_xtltp")
+
+[node name="DialogueQueue" parent="." unique_id=900696680 node_paths=PackedStringArray("_title_label", "_typed_label", "_title_panel", "_options_container") instance=ExtResource("2_lsbky")]
+_title_label = NodePath("../MarginContainer/DialogueContainer/TitleBoxContainer/MarginContainer/TitleLabel")
+_typed_label = NodePath("../MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer/VBoxContainer/DialogueLabel")
+_title_panel = NodePath("../MarginContainer/DialogueContainer/TitleBoxContainer")
+_options_container = NodePath("../MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer/VBoxContainer/OptionsContainer")
+_option_button_scene = ExtResource("3_lsbky")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=977520852]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 4
+
+[node name="DialogueContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1904244564]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="TitleBoxContainer" type="PanelContainer" parent="MarginContainer/DialogueContainer" unique_id=1394534041]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_w3xgi")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/DialogueContainer/TitleBoxContainer" unique_id=77334572]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/DialogueContainer/TitleBoxContainer/MarginContainer" unique_id=961221367]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Title"
+horizontal_alignment = 1
+
+[node name="TextBoxContainer" type="PanelContainer" parent="MarginContainer/DialogueContainer" unique_id=1666804731]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_msum5")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/DialogueContainer/TextBoxContainer" unique_id=1072313679]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer" unique_id=513654104]
+layout_mode = 2
+
+[node name="DialogueLabel" parent="MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer/VBoxContainer" unique_id=491359474 node_paths=PackedStringArray("play_audio_while_typing") instance=ExtResource("2_05377")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+time_per_character = 30.0
+play_audio_while_typing = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer/VBoxContainer/DialogueLabel" unique_id=670877077]
+stream = SubResource("AudioStreamRandomizer_ea0my")
+volume_db = -25.0
+bus = &"SFX"
+
+[node name="OptionsContainer" type="GridContainer" parent="MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer/VBoxContainer" unique_id=1161445991]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+columns = 2

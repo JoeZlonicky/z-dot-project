@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c54w18upqd8ln"]
+
+[ext_resource type="Script" uid="uid://lsfvhn6gu8la" path="res://scenes/menus/dialogue_menu/_test/dialogue_menu_test.gd" id="1_6g3df"]
+[ext_resource type="PackedScene" uid="uid://by7j4iutullnw" path="res://scenes/menus/dialogue_menu/dialogue_menu.tscn" id="2_hsm8v"]
+
+[node name="DialogueMenuTest" type="Node" unique_id=1617938100]
+script = ExtResource("1_6g3df")
+
+[node name="DialogueScreen" parent="." unique_id=103227618 instance=ExtResource("2_hsm8v")]
+visible = false
