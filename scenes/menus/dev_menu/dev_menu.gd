@@ -10,6 +10,7 @@ func _ready() -> void:
 		return
 	
 	dropdowns.create_menu("Utility", UtilityDevMenuEntries.get_entries())
+	hide()
 
 
 func _input(event: InputEvent) -> void:

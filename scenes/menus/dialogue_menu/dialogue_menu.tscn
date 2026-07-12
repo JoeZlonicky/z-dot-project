@@ -14,7 +14,7 @@ random_pitch = 1.2
 random_volume_offset_db = 2.0
 streams_count = 4
 
-[node name="DialogueScreen" type="CanvasLayer" unique_id=103227618]
+[node name="DialogueMenu" type="CanvasLayer" unique_id=103227618]
 script = ExtResource("1_xtltp")
 
 [node name="DialogueQueue" parent="." unique_id=900696680 node_paths=PackedStringArray("_title_label", "_typed_label", "_title_panel", "_options_container") instance=ExtResource("2_lsbky")]
@@ -27,11 +27,17 @@ _option_button_scene = ExtResource("3_lsbky")
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=977520852]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 200)
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -505.0
+offset_top = -293.0
+offset_right = 505.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 4
 

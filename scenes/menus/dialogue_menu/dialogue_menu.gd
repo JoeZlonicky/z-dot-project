@@ -1,10 +1,9 @@
-class_name DialogueScreen
+class_name DialogueMenu
 extends CanvasLayer
 
 @onready var queue: DialogueQueue = $DialogueQueue
 
 @onready var _margin_container: MarginContainer = %MarginContainer
-@onready var _dialogue_container: Container = %DialogueContainer
 
 
 func _ready() -> void:
@@ -21,15 +20,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _animate_first_dialogue() -> void:
-	# Kinda gross but we need to wait for UI to update after being shown
-	# By using modulate, instead of hiding, the UI is still correct but doesn't show yet
-	_margin_container.modulate = Color.TRANSPARENT
-	await get_tree().process_frame
-	await get_tree().process_frame
-	var dialogue_center := _dialogue_container.get_global_rect().get_center()
-	_margin_container.pivot_offset = dialogue_center
-	_margin_container.modulate = Color.WHITE
-	
 	var tween := create_tween()
 	tween.tween_property(_margin_container, "scale", Vector2.ONE,
 		0.2).from(Vector2.ZERO)

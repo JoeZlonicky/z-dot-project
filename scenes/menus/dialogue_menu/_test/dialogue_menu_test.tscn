@@ -3,7 +3,34 @@
 [ext_resource type="Script" uid="uid://lsfvhn6gu8la" path="res://scenes/menus/dialogue_menu/_test/dialogue_menu_test.gd" id="1_6g3df"]
 [ext_resource type="PackedScene" uid="uid://by7j4iutullnw" path="res://scenes/menus/dialogue_menu/dialogue_menu.tscn" id="2_hsm8v"]
 
-[node name="DialogueMenuTest" type="Node" unique_id=2025028535]
+[node name="DialogueMenuTest" type="CanvasLayer" unique_id=739334969]
 script = ExtResource("1_6g3df")
 
 [node name="DialogueScreen" parent="." unique_id=103227618 instance=ExtResource("2_hsm8v")]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1659960872]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=208234572]
+layout_mode = 2
+text = "Title:"
+
+[node name="TitleEdit" type="LineEdit" parent="VBoxContainer" unique_id=1540779781]
+layout_mode = 2
+text = "Title"
+
+[node name="ContentLabel" type="Label" parent="VBoxContainer" unique_id=1924671296]
+layout_mode = 2
+text = "Content:"
+
+[node name="ContentEdit" type="LineEdit" parent="VBoxContainer" unique_id=2104924330]
+layout_mode = 2
+text = "Content"
+
+[node name="AddButton" type="Button" parent="VBoxContainer" unique_id=1701686495]
+layout_mode = 2
+text = "Add dialogue"
+
+[connection signal="pressed" from="VBoxContainer/AddButton" to="." method="_on_add_button_pressed"]

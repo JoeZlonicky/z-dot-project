@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://ktgpuvfmyy58"]
 
 [ext_resource type="Script" uid="uid://bsqssgbd1nc0c" path="res://scenes/game/game.gd" id="1_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://by7j4iutullnw" path="res://scenes/menus/dialogue_menu/dialogue_menu.tscn" id="2_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://d34o2g1va8dgh" path="res://scenes/menus/pause_menu/pause_menu.tscn" id="3_kelw5"]
 
 [node name="Game" type="Node2D" unique_id=287300140]
 script = ExtResource("1_l1rk1")
+
+[node name="Menus" type="Node" parent="." unique_id=759917554]
+
+[node name="DialogueMenu" parent="Menus" unique_id=103227618 instance=ExtResource("2_0sr1o")]
+unique_name_in_owner = true
+visible = false
+
+[node name="PauseMenu" parent="Menus" unique_id=1351992821 instance=ExtResource("3_kelw5")]
+unique_name_in_owner = true
+visible = false
