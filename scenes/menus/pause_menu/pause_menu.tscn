@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://5b5qe7nd36po" path="res://lib/components/ui/pause_toggle/pause_toggle.tscn" id="1_hp7xe"]
 [ext_resource type="PackedScene" uid="uid://levydfyuvftl" path="res://lib/components/ui/buttons/toggle_visibility_button/toggle_visibility_button.tscn" id="2_kluy1"]
 [ext_resource type="PackedScene" uid="uid://be4ilohcv0h4w" path="res://lib/components/ui/focus_on_visible/focus_on_visible.tscn" id="3_64nit"]
-[ext_resource type="PackedScene" uid="uid://bj133batutg7p" path="res://lib/components/ui/hide_in_web/hide_in_web.tscn" id="4_atyas"]
-[ext_resource type="PackedScene" uid="uid://cs3e5cs1hbgl" path="res://lib/components/ui/buttons/quit_button/quit_button.tscn" id="5_0v8pm"]
+[ext_resource type="PackedScene" uid="uid://dx64o4ufhpr0p" path="res://lib/components/ui/buttons/change_scene_button/change_scene_button.tscn" id="4_hp7xe"]
 [ext_resource type="PackedScene" uid="uid://bp0bevgpkgj31" path="res://scenes/menus/settings_menu/settings_menu.tscn" id="6_mbmtw"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1351992821]
@@ -51,14 +50,11 @@ text = "PAUSED_SETTINGS"
 show_canvas_layers = [NodePath("../../SettingsMenu")]
 hide_canvas_items = [NodePath("..")]
 
-[node name="QuitButton" parent="Options" unique_id=517231563 node_paths=PackedStringArray("show_canvas_items", "hide_canvas_items") instance=ExtResource("2_kluy1")]
+[node name="ToMainMenuButton" parent="Options" unique_id=517231563 node_paths=PackedStringArray("show_canvas_items", "hide_canvas_items") instance=ExtResource("2_kluy1")]
 layout_mode = 2
-text = "PAUSED_QUIT"
+text = "PAUSED_TO_MAIN_MENU"
 show_canvas_items = [NodePath("../../ConfirmQuit")]
 hide_canvas_items = [NodePath("..")]
-
-[node name="HideInWeb" parent="Options/QuitButton" unique_id=1286186158 node_paths=PackedStringArray("canvas_items") instance=ExtResource("4_atyas")]
-canvas_items = [NodePath("..")]
 
 [node name="ConfirmQuit" type="VBoxContainer" parent="." unique_id=36415557]
 visible = false
@@ -78,13 +74,14 @@ theme_override_constants/margin_right = 32
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "QUIT_CONFIRM_MESSAGE"
+text = "TO_MAIN_MENU_CONFIRM_MESSAGE"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="ConfirmButton" parent="ConfirmQuit" unique_id=2110004318 instance=ExtResource("5_0v8pm")]
+[node name="ConfirmButton" parent="ConfirmQuit" unique_id=2110004318 instance=ExtResource("4_hp7xe")]
 layout_mode = 2
 text = "QUIT_CONFIRM_CONFIRM"
+scene_file = "uid://dns51xsrrds5f"
 
 [node name="FocusOnVisible" parent="ConfirmQuit/ConfirmButton" unique_id=1950678048 node_paths=PackedStringArray("control") instance=ExtResource("3_64nit")]
 control = NodePath("..")
@@ -98,6 +95,9 @@ trigger_on_ui_cancel = true
 
 [node name="SettingsMenu" parent="." unique_id=930100985 instance=ExtResource("6_mbmtw")]
 visible = false
+
+[node name="FullscreenButton" parent="SettingsMenu/Settings" parent_id_path=PackedInt32Array(930100985, 1289317498) index="3" unique_id=832611183]
+process_mode = 0
 
 [node name="BackButton" parent="SettingsMenu/Settings" parent_id_path=PackedInt32Array(930100985, 1289317498) index="6" unique_id=606745922 node_paths=PackedStringArray("show_canvas_items")]
 show_canvas_items = [NodePath("../../../Options")]

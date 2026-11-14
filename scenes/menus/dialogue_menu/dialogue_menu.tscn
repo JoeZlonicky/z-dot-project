@@ -17,12 +17,14 @@ streams_count = 4
 [node name="DialogueMenu" type="CanvasLayer" unique_id=103227618]
 script = ExtResource("1_xtltp")
 
-[node name="DialogueQueue" parent="." unique_id=900696680 node_paths=PackedStringArray("_title_label", "_typed_label", "_title_panel", "_options_container") instance=ExtResource("2_lsbky")]
+[node name="DialogueQueue" parent="." unique_id=900696680 node_paths=PackedStringArray("_title_label", "_typed_label", "_title_panel", "_options_container", "_reward_container", "_reward_texture") instance=ExtResource("2_lsbky")]
 _title_label = NodePath("../MarginContainer/DialogueContainer/TitleBoxContainer/MarginContainer/TitleLabel")
 _typed_label = NodePath("../MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer/VBoxContainer/DialogueLabel")
 _title_panel = NodePath("../MarginContainer/DialogueContainer/TitleBoxContainer")
 _options_container = NodePath("../MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer/VBoxContainer/OptionsContainer")
 _option_button_scene = ExtResource("3_lsbky")
+_reward_container = NodePath("../MarginContainer/DialogueContainer/RewardContainer")
+_reward_texture = NodePath("../MarginContainer/DialogueContainer/RewardContainer/RewardTexture")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=977520852]
 unique_name_in_owner = true
@@ -47,6 +49,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/separation = 20
+
+[node name="RewardContainer" type="PanelContainer" parent="MarginContainer/DialogueContainer" unique_id=1567162877]
+layout_mode = 2
+
+[node name="RewardTexture" type="TextureRect" parent="MarginContainer/DialogueContainer/RewardContainer" unique_id=1761972158]
+layout_mode = 2
 
 [node name="TitleBoxContainer" type="PanelContainer" parent="MarginContainer/DialogueContainer" unique_id=1394534041]
 unique_name_in_owner = true
@@ -80,13 +88,12 @@ theme_override_constants/margin_bottom = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer" unique_id=513654104]
 layout_mode = 2
 
-[node name="DialogueLabel" parent="MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer/VBoxContainer" unique_id=491359474 node_paths=PackedStringArray("play_audio_while_typing") instance=ExtResource("2_05377")]
+[node name="DialogueLabel" parent="MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer/VBoxContainer" unique_id=491359474 instance=ExtResource("2_05377")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1000, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 time_per_character = 30.0
-play_audio_while_typing = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/DialogueContainer/TextBoxContainer/MarginContainer/VBoxContainer/DialogueLabel" unique_id=670877077]
 stream = SubResource("AudioStreamRandomizer_ea0my")

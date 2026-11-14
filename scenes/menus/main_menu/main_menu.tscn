@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://dns51xsrrds5f"]
+
+[ext_resource type="PackedScene" uid="uid://dx64o4ufhpr0p" path="res://lib/components/ui/buttons/change_scene_button/change_scene_button.tscn" id="1_kx65a"]
+[ext_resource type="PackedScene" uid="uid://be4ilohcv0h4w" path="res://lib/components/ui/focus_on_visible/focus_on_visible.tscn" id="2_flk2s"]
+[ext_resource type="PackedScene" uid="uid://levydfyuvftl" path="res://lib/components/ui/buttons/toggle_visibility_button/toggle_visibility_button.tscn" id="3_gm7d7"]
+[ext_resource type="PackedScene" uid="uid://cp4pd8a0dbd16" path="res://lib/components/ui/buttons/language_toggle_button/language_toggle_button.tscn" id="4_peecx"]
+[ext_resource type="PackedScene" uid="uid://cs3e5cs1hbgl" path="res://lib/components/ui/buttons/quit_button/quit_button.tscn" id="5_x31ro"]
+[ext_resource type="PackedScene" uid="uid://bj133batutg7p" path="res://lib/components/ui/hide_in_web/hide_in_web.tscn" id="6_0jpat"]
+[ext_resource type="PackedScene" uid="uid://sgg1jw7ml0pb" path="res://lib/components/ui/buttons/volume_button/volume_button.tscn" id="7_0jpat"]
+[ext_resource type="PackedScene" uid="uid://dcoo4b8d4qy3t" path="res://lib/components/ui/buttons/fullscreen_button/fullscreen_button.tscn" id="8_m0ubd"]
+[ext_resource type="PackedScene" uid="uid://mr8w8fe8v0kn" path="res://lib/components/ui/buttons/license_button/license_button.tscn" id="9_627ab"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=1614687812]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=707866949]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=515776939]
+layout_mode = 2
+text = "Title"
+horizontal_alignment = 1
+
+[node name="Author" type="Label" parent="VBoxContainer/Title" unique_id=1711558775]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -6.0
+offset_right = 27.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Author"
+horizontal_alignment = 1
+
+[node name="MainButtonContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=2007599831]
+layout_mode = 2
+
+[node name="PlayButton" parent="VBoxContainer/MainButtonContainer" unique_id=2110004318 instance=ExtResource("1_kx65a")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "MAIN_MENU_PLAY"
+scene_file = "uid://ktgpuvfmyy58"
+
+[node name="FocusOnVisible" parent="VBoxContainer/MainButtonContainer/PlayButton" unique_id=1118151319 node_paths=PackedStringArray("control") instance=ExtResource("2_flk2s")]
+control = NodePath("..")
+
+[node name="SettingsButton" parent="VBoxContainer/MainButtonContainer" unique_id=606745922 node_paths=PackedStringArray("show_canvas_items", "hide_canvas_items") instance=ExtResource("3_gm7d7")]
+layout_mode = 2
+text = "PAUSED_SETTINGS"
+show_canvas_items = [NodePath("../../SettingsButtonContainer")]
+hide_canvas_items = [NodePath("..")]
+
+[node name="LanguageToggleButton" parent="VBoxContainer/MainButtonContainer" unique_id=1860688582 instance=ExtResource("4_peecx")]
+layout_mode = 2
+
+[node name="QuitButton" parent="VBoxContainer/MainButtonContainer" unique_id=1907039310 instance=ExtResource("5_x31ro")]
+layout_mode = 2
+
+[node name="HideInWeb" parent="VBoxContainer/MainButtonContainer/QuitButton" unique_id=1286186158 node_paths=PackedStringArray("canvas_items") instance=ExtResource("6_0jpat")]
+canvas_items = [NodePath("..")]
+
+[node name="SettingsButtonContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=281733953]
+visible = false
+layout_mode = 2
+
+[node name="MusicButton" parent="VBoxContainer/SettingsButtonContainer" unique_id=1257082484 instance=ExtResource("7_0jpat")]
+layout_mode = 2
+audio_bus = "Music"
+
+[node name="FocusOnVisible" parent="VBoxContainer/SettingsButtonContainer/MusicButton" unique_id=560024878 node_paths=PackedStringArray("control") instance=ExtResource("2_flk2s")]
+control = NodePath("..")
+
+[node name="SFX_BUTTON" parent="VBoxContainer/SettingsButtonContainer" unique_id=139214867 instance=ExtResource("7_0jpat")]
+layout_mode = 2
+text = "SETTINGS_SFX_SLIDER_LABEL"
+audio_bus = "SFX"
+
+[node name="FullscreenButton" parent="VBoxContainer/SettingsButtonContainer" unique_id=832611183 instance=ExtResource("8_m0ubd")]
+process_mode = 0
+layout_mode = 2
+
+[node name="LicenseButton" parent="VBoxContainer/SettingsButtonContainer" unique_id=83213412 instance=ExtResource("9_627ab")]
+layout_mode = 2
+
+[node name="BackButton" parent="VBoxContainer/SettingsButtonContainer" unique_id=117035622 node_paths=PackedStringArray("show_canvas_items", "hide_canvas_items") instance=ExtResource("3_gm7d7")]
+layout_mode = 2
+text = "SETTINGS_BACK"
+show_canvas_items = [NodePath("../../MainButtonContainer")]
+hide_canvas_items = [NodePath("..")]
